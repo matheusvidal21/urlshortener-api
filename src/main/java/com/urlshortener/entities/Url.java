@@ -1,7 +1,6 @@
 package com.urlshortener.entities;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -16,11 +15,13 @@ public class Url {
     private Date createdDate;
     private Date expiresDate;
 
-    public Url(Long id, String longUrl, Date expiresDate) {
-        this.id = id;
+    public Url(String longUrl, Date expiresDate) {
         this.longUrl = longUrl;
         this.createdDate = new Date();
         this.expiresDate = expiresDate;
+    }
+
+    public Url() {
     }
 
     public Long getId() {

@@ -8,7 +8,7 @@ public class BaseConverter {
     private char[] allowedCharacters = BASE62CHARS.toCharArray();
     private int base = allowedCharacters.length;
 
-    public String encode (long input){
+    public String encode(long input){
         var encodedString = new StringBuilder();
 
         if(input == 0){
@@ -30,7 +30,7 @@ public class BaseConverter {
         var decoded = 0;
         var counter = 1;
         for(int i = 0; i < length; i++){
-            decoded += BASE62CHARS.indexOf(characters[i]) * Math.pow(base, length = counter);
+            decoded += BASE62CHARS.indexOf(characters[i]) * Math.pow(base, length - counter);
             counter++;
         }
         return decoded;
