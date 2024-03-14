@@ -17,6 +17,25 @@ Este projeto é um encurtador de URL desenvolvido com Java e Spring, permitindo 
 ## Conversão de URL
 O projeto utiliza a conversão de <b>base 62</b> para gerar URLs curtas. Isso permite uma ampla variedade de combinações únicas para os links curtos, garantindo uma distribuição uniforme e evitando colisões. A conversão de base 62 é realizada através de um algoritmo que mapeia números da base 10 para caracteres alfanuméricos ([0-9][az][AZ]).
 
+## Endpoints Disponíveis
+1. Criar URL curta
+- Método: POST
+- Endpoint: /url/create-short
+- Corpo da Requisição: UrlLongRequest
+```json
+{
+  "longUrl": "URL_LONGA_AQUI",
+  "expiresDate": "DATA_DE_EXPIRAÇÃO_OPCIONAL"
+}
+```
+- Descrição: Este endpoint permite aos usuários criar URLs curtas a partir de URLs longas. É possível especificar uma data de expiração opcional para o link curto.
+
+2. Redirecionar para URL original
+- Método: GET
+- Endpoint: /url/{shortUrl}
+- Parâmetro Path: {shortUrl} - O código de URL curta gerado.
+- Descrição: Este endpoint redireciona os usuários para a URL original associada ao código de URL curta fornecido. Se a URL expirar, será exibida uma mensagem indicando que o link expirou.
+
 ## Observação
 É importante notar que os primeiros links gerados pelo sistema correspondem aos primeiros IDs do banco de dados. Como resultado, esses links serão extremamente curtos, consistindo de apenas algumas letras ou caracteres. À medida que mais links são adicionados ao banco de dados, os links gerados podem se tornar um pouco mais longos, mas ainda respeitando o limite máximo de 7 caracteres estabelecido pelo sistema.
 
